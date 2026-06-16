@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Silmarillion — a reading companion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void: #14111f;
+    --void-deep: #0b0a14;
+    --gold: #d8b56c;
+    --gold-dim: #9c8350;
+    --parchment: #ece6d8;
+    --parchment-dim: #b5ac98;
+    --lavender: #9089ad;
+    --teal: #5dcaa5;
+    --teal-light: #d8f3e6;
+    --teal-deep: #11392f;
+    --teal-border: #2f8f74;
+    --coral: #e2876a;
+    --coral-light: #f6d2c2;
+    --coral-deep: #3a1c14;
+    --coral-border: #b35936;
+    --gray-fill: #211e30;
+    --gray-border: #4a4566;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background-color: var(--void);
+    background-image:
+      radial-gradient(1px 1px at 8% 18%, rgba(236,230,216,0.45) 0, transparent 50%),
+      radial-gradient(1px 1px at 82% 9%, rgba(236,230,216,0.3) 0, transparent 50%),
+      radial-gradient(1.5px 1.5px at 62% 68%, rgba(236,230,216,0.35) 0, transparent 50%),
+      radial-gradient(1px 1px at 28% 82%, rgba(236,230,216,0.25) 0, transparent 50%),
+      radial-gradient(1px 1px at 92% 48%, rgba(236,230,216,0.3) 0, transparent 50%),
+      radial-gradient(1.5px 1.5px at 46% 32%, rgba(236,230,216,0.3) 0, transparent 50%),
+      radial-gradient(1px 1px at 14% 58%, rgba(236,230,216,0.22) 0, transparent 50%),
+      radial-gradient(1px 1px at 72% 92%, rgba(236,230,216,0.2) 0, transparent 50%);
+    background-attachment: fixed;
+    color: var(--parchment);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); }
+  a:hover { color: var(--parchment); border-bottom-color: var(--gold); }
+
+  .page { max-width: 720px; margin: 0 auto; padding: 64px 24px 96px; }
+
+  .masthead { text-align: center; padding-bottom: 36px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--lavender); margin: 0 0 18px;
+  }
+  .book-title {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: 56px; color: var(--gold); margin: 0; letter-spacing: 0.01em;
+  }
+  .book-subtitle {
+    font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 18px;
+    color: var(--parchment-dim); margin: 10px 0 0;
+  }
+  .wave { margin: 36px auto 0; max-width: 560px; }
+  .wave svg { width: 100%; height: auto; display: block; }
+  .wave-gold { stroke: var(--gold); fill: none; }
+  .wave-coral { stroke: var(--coral); fill: none; opacity: 0.85; }
+  .wave-star { fill: var(--gold); }
+
+  .toc {
+    border-top: 1px solid rgba(216,181,108,0.25);
+    border-bottom: 1px solid rgba(216,181,108,0.25);
+    padding: 20px 0; margin-bottom: 56px;
+  }
+  .toc-label {
+    font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--lavender);
+    margin: 0 0 10px; text-align: center;
+  }
+  .toc ol { list-style: none; margin: 0; padding: 0; text-align: center; }
+  .toc li { margin: 6px 0; }
+  .toc a { font-family: 'Lora', Georgia, serif; font-size: 16px; color: var(--parchment); border-bottom: 1px solid transparent; }
+  .toc a:hover { color: var(--gold); border-bottom-color: var(--gold-dim); }
+
+  .chapter { margin-bottom: 48px; }
+  .chapter-eyebrow {
+    font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dim); margin: 0;
+  }
+  .chapter-title {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: 40px; color: var(--gold); margin: 6px 0 0;
+  }
+  .chapter-subtitle {
+    font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 17px;
+    color: var(--parchment-dim); margin: 6px 0 36px;
+  }
+
+  p { margin: 0 0 22px; }
+  .dropcap {
+    float: left; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: 64px; line-height: 0.78; color: var(--gold);
+    padding-right: 10px; padding-top: 4px;
+  }
+
+  .diagram-block { margin: 36px 0; }
+  .diagram-block svg { width: 100%; height: auto; display: block; }
+  .diagram-caption {
+    font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12px;
+    color: var(--parchment-dim); text-align: center; margin: 14px 0 0;
+  }
+
+  .nbox rect { stroke-width: 1; }
+  .nbox.gray rect { fill: var(--gray-fill); stroke: var(--gray-border); }
+  .nbox.gray .lbl-title { fill: var(--parchment); }
+  .nbox.gray .lbl-sub { fill: var(--parchment-dim); }
+  .nbox.teal rect { fill: var(--teal-deep); stroke: var(--teal-border); }
+  .nbox.teal .lbl-title { fill: var(--teal-light); }
+  .nbox.teal .lbl-sub { fill: var(--teal); }
+  .nbox.coral rect { fill: var(--coral-deep); stroke: var(--coral-border); }
+  .nbox.coral .lbl-title { fill: var(--coral-light); }
+  .nbox.coral .lbl-sub { fill: var(--coral); }
+  .lbl-title { font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 15px; }
+  .lbl-sub { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 12.5px; }
+  .arrow { stroke: var(--gold-dim); stroke-width: 1.5; fill: none; }
+
+  .key-idea {
+    background: var(--void-deep); border: 1px solid rgba(216,181,108,0.3);
+    border-radius: 4px; padding: 24px 28px; margin: 40px 0 0;
+  }
+  .key-idea-label {
+    font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 0 0 10px;
+  }
+  .key-idea p:last-child { margin-bottom: 0; font-style: italic; color: var(--parchment); }
+
+  .page-footer { text-align: center; padding-top: 40px; border-top: 1px solid rgba(216,181,108,0.2); }
+  .page-footer p {
+    font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12px;
+    letter-spacing: 0.04em; color: var(--lavender); margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .book-title { font-size: 42px; }
+    .chapter-title { font-size: 32px; }
+    body { font-size: 16.5px; }
+    .page { padding: 40px 18px 72px; }
+    .dropcap { font-size: 52px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <p class="eyebrow">J. R. R. Tolkien</p>
+    <h1 class="book-title">The Silmarillion</h1>
+    <p class="book-subtitle">a reading companion, chapter by chapter</p>
+    <div class="wave" aria-hidden="true">
+      <svg viewBox="0 0 800 90">
+        <path class="wave-gold" stroke-width="2" d="M0,45 C50,18 100,18 150,45 C200,72 250,72 300,45 C350,18 400,18 450,45 C500,72 550,72 600,45 C650,18 700,18 750,45 L800,45"/>
+        <polyline class="wave-coral" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,45 25,15 50,68 75,12 100,70 125,18 150,65 175,22 200,60 225,28 250,52 275,38 300,46 325,42 350,44"/>
+        <circle class="wave-star" cx="480" cy="38" r="2" opacity="0.6"/>
+        <circle class="wave-star" cx="560" cy="62" r="1.6" opacity="0.5"/>
+        <circle class="wave-star" cx="640" cy="30" r="2" opacity="0.55"/>
+        <circle class="wave-star" cx="715" cy="58" r="1.6" opacity="0.45"/>
+        <circle class="wave-star" cx="770" cy="40" r="1.8" opacity="0.5"/>
+      </svg>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="chapters">
+    <p class="toc-label">chapters</p>
+    <ol>
+      <li><a href="#ainulindale">I — Ainulindalë: the music of the Ainur</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section id="ainulindale" class="chapter">
+      <p class="chapter-eyebrow">chapter I</p>
+      <h2 class="chapter-title">Ainulindalë</h2>
+      <p class="chapter-subtitle">The music of the Ainur</p>
+
+      <p class="lead"><span class="dropcap">B</span>efore anything else exists, Eru Ilúvatar makes the Ainur and teaches them to sing. At first each of them grasps only the fragment of his thought from which they came, but as they listen to one another the song grows in harmony. When Ilúvatar lays out a single great theme and asks them to build a Great Music from it together, the song goes well, until Melkor, the most gifted of the Ainur, begins weaving in ideas of his own. He hopes to swell his own importance, and discord spreads outward as other voices drift toward his sound.</p>
+
+      <p>Ilúvatar answers twice. A second theme, raised with his left hand, is drowned out by Melkor's noise. A third, raised with his right hand, starts so soft it is almost lost — yet it proves impossible to silence. By the end only two musics remain: one deep, sorrowful, and beautiful; the other loud, repetitive, and pleased with itself. The deep music keeps absorbing the loud one's boldest notes into its own pattern, until Ilúvatar ends everything with a single chord.</p>
+
+      <div class="diagram-block">
+        <svg viewBox="0 0 680 600" role="img" aria-labelledby="d1title d1desc">
+          <title id="d1title">The Great Music: from harmony to discord to silence</title>
+          <desc id="d1desc">Five steps: the Ainur sing the great theme in harmony; Melkor sows discord seeking his own glory; Ilúvatar's second theme is overwhelmed; his third theme endures, soft then unquenchable; a single chord ends the music.</desc>
+          <defs><marker id="arrow1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#9c8350" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+          <g class="nbox gray">
+            <rect x="180" y="40" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="58" text-anchor="middle" dominant-baseline="central">Ainur sing the great theme</text>
+            <text class="lbl-sub" x="340" y="76" text-anchor="middle" dominant-baseline="central">United in harmony at first</text>
+          </g>
+          <line x1="340" y1="96" x2="340" y2="156" class="arrow" marker-end="url(#arrow1)"/>
+
+          <g class="nbox coral">
+            <rect x="180" y="156" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="174" text-anchor="middle" dominant-baseline="central">Melkor sows discord</text>
+            <text class="lbl-sub" x="340" y="192" text-anchor="middle" dominant-baseline="central">Seeking his own glory</text>
+          </g>
+          <line x1="340" y1="212" x2="340" y2="272" class="arrow" marker-end="url(#arrow1)"/>
+
+          <g class="nbox teal">
+            <rect x="180" y="272" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="290" text-anchor="middle" dominant-baseline="central">Second theme overwhelmed</text>
+            <text class="lbl-sub" x="340" y="308" text-anchor="middle" dominant-baseline="central">Ilúvatar's left hand, undone</text>
+          </g>
+          <line x1="340" y1="328" x2="340" y2="388" class="arrow" marker-end="url(#arrow1)"/>
+
+          <g class="nbox teal">
+            <rect x="180" y="388" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="406" text-anchor="middle" dominant-baseline="central">Third theme endures</text>
+            <text class="lbl-sub" x="340" y="424" text-anchor="middle" dominant-baseline="central">Soft at first, unquenchable</text>
+          </g>
+          <line x1="340" y1="444" x2="340" y2="504" class="arrow" marker-end="url(#arrow1)"/>
+
+          <g class="nbox gray">
+            <rect x="180" y="504" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="522" text-anchor="middle" dominant-baseline="central">One chord ends the music</text>
+            <text class="lbl-sub" x="340" y="540" text-anchor="middle" dominant-baseline="central">Ilúvatar silences everything</text>
+          </g>
+        </svg>
+        <p class="diagram-caption">gray — connecting narrative beats &nbsp;·&nbsp; coral — Melkor's interference &nbsp;·&nbsp; teal — Ilúvatar's answering themes</p>
+      </div>
+
+      <p>Once the Music stops, Ilúvatar makes his point plain: nothing Melkor did escaped his authorship. Even the rebellion becomes material for something Melkor himself never imagined. To prove it, he gives the Ainur sight rather than mere hearing, and shows them a vision of an actual World growing out of their song. Elves and Men appear in it, arriving with that third theme — and crucially, the Ainur did not make them, which is exactly why the Ainur come to love them so much once they see them. The vision is then cut off mid-story, well before the World's later ages play out, which is why even the Valar never have certain knowledge of how things end.</p>
+
+      <p>Wanting what they saw to be more than a vision, the Ainur get their wish. Ilúvatar speaks the word <em>Eä</em>, sends in the Imperishable Flame, and the World becomes real rather than merely imagined. Some of the Ainur choose to descend into it and become the Valar, bound to the thing they now shape. Inside, they discover the vision was only a sketch, and Manwë, Aulë, and Ulmo set to the actual work of building it. Melkor tries to claim the whole thing as his personal kingdom; Manwë pushes back; and a long, destructive tug-of-war follows — mountains raised and cast down, seas hollowed and spilled, again and again — until Arda still, slowly and imperfectly, takes a shape sturdy enough to one day hold the Children of Ilúvatar.</p>
+
+      <div class="diagram-block">
+        <svg viewBox="0 0 680 600" role="img" aria-labelledby="d2title d2desc">
+          <title id="d2title">From vision to a world: Eä takes shape</title>
+          <desc id="d2desc">Five steps: the vision of the World is shown, with Elves and Men appearing in it; Ilúvatar speaks Eä and the World is made real; the Valar descend into it, bound forever; Melkor claims Arda and Manwë opposes him; Arda slowly takes shape despite the conflict.</desc>
+          <defs><marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#9c8350" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+          <g class="nbox gray">
+            <rect x="180" y="40" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="58" text-anchor="middle" dominant-baseline="central">Vision of the World</text>
+            <text class="lbl-sub" x="340" y="76" text-anchor="middle" dominant-baseline="central">Elves and Men appear</text>
+          </g>
+          <line x1="340" y1="96" x2="340" y2="156" class="arrow" marker-end="url(#arrow2)"/>
+
+          <g class="nbox teal">
+            <rect x="180" y="156" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="174" text-anchor="middle" dominant-baseline="central">Eä is spoken</text>
+            <text class="lbl-sub" x="340" y="192" text-anchor="middle" dominant-baseline="central">The World is made real</text>
+          </g>
+          <line x1="340" y1="212" x2="340" y2="272" class="arrow" marker-end="url(#arrow2)"/>
+
+          <g class="nbox teal">
+            <rect x="180" y="272" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="290" text-anchor="middle" dominant-baseline="central">Valar descend into Eä</text>
+            <text class="lbl-sub" x="340" y="308" text-anchor="middle" dominant-baseline="central">Bound to the World forever</text>
+          </g>
+          <line x1="340" y1="328" x2="340" y2="388" class="arrow" marker-end="url(#arrow2)"/>
+
+          <g class="nbox coral">
+            <rect x="180" y="388" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="406" text-anchor="middle" dominant-baseline="central">Melkor claims Arda</text>
+            <text class="lbl-sub" x="340" y="424" text-anchor="middle" dominant-baseline="central">Manwë opposes him</text>
+          </g>
+          <line x1="340" y1="444" x2="340" y2="504" class="arrow" marker-end="url(#arrow2)"/>
+
+          <g class="nbox gray">
+            <rect x="180" y="504" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="522" text-anchor="middle" dominant-baseline="central">Arda slowly takes shape</text>
+            <text class="lbl-sub" x="340" y="540" text-anchor="middle" dominant-baseline="central">Built, broken, rebuilt</text>
+          </g>
+        </svg>
+        <p class="diagram-caption">gray — connecting narrative beats &nbsp;·&nbsp; coral — Melkor's interference &nbsp;·&nbsp; teal — the Valar's own creative work</p>
+      </div>
+
+      <aside class="key-idea">
+        <p class="key-idea-label">the idea to hold onto</p>
+        <p>Melkor's rebellion was never actually outside Ilúvatar's design — it was raw material Ilúvatar meant to use all along. That's a different claim than "good defeats evil," and it shapes how Tolkien handles Melkor for the rest of the book.</p>
+      </aside>
+    </section>
+
+    <!-- Add Chapter II here, following the same <section class="chapter"> structure as Chapter I above. Also add a matching <li> link inside the <nav class="toc"> list. -->
+
+  </main>
+
+  <footer class="page-footer">
+    <p>this companion will keep growing, chapter by chapter, as the book is read.</p>
+  </footer>
+
+</div>
+</body>
+</html>
