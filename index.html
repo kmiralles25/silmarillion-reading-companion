@@ -176,6 +176,14 @@
   }
   .key-idea p:last-child { margin-bottom: 0; font-style: italic; color: var(--parchment); }
 
+  .back-to-toc { text-align: center; margin: 32px 0 0; }
+  .back-to-toc a {
+    font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--lavender);
+    border-bottom: none;
+  }
+  .back-to-toc a:hover { color: var(--gold); }
+
   .page-footer { text-align: center; padding-top: 40px; border-top: 1px solid rgba(216,181,108,0.2); }
   .page-footer p {
     font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12px;
@@ -211,7 +219,7 @@
     </div>
   </header>
 
-  <details class="toc-wrap" open>
+  <details class="toc-wrap" id="toc" open>
     <summary>contents</summary>
     <ol class="toc-list">
       <li><a href="#ainulindale">I — Ainulindalë: the music of the Ainur</a></li>
@@ -220,7 +228,7 @@
         <details class="toc-sub">
           <summary>III — Quenta Silmarillion</summary>
           <ol>
-            <li class="toc-pending">chapters will appear here as you go</li>
+            <li><a href="#qs-1">1. Of the Beginning of Days</a></li>
           </ol>
         </details>
       </li>
@@ -331,6 +339,8 @@
         <p class="key-idea-label">the idea to hold onto</p>
         <p>Melkor's rebellion was never actually outside Ilúvatar's design — it was raw material Ilúvatar meant to use all along. That's a different claim than "good defeats evil," and it shapes how Tolkien handles Melkor for the rest of the book.</p>
       </aside>
+
+      <p class="back-to-toc"><a href="#toc">↑ back to contents</a></p>
     </section>
 
     <section id="valaquenta" class="chapter">
@@ -424,6 +434,8 @@
         <p class="key-idea-label">the idea to hold onto</p>
         <p>Ainulindalë defined evil as introducing your own theme over the shared one. Valaquenta sharpens that: every legitimate Vala is identified by a real task that points outward, air, sea, growing things, doom, while Melkor's only constant trait across both chapters is wanting whatever exists to belong to him alone. Service to something outside yourself versus power turned entirely inward — that is the moral architecture of the whole book, stated twice in two vocabularies.</p>
       </aside>
+
+      <p class="back-to-toc"><a href="#toc">↑ back to contents</a></p>
     </section>
 
     <div class="part-divider" id="quenta-silmarillion">
@@ -432,7 +444,95 @@
       <p class="part-subtitle">the history of the Silmarils, in twenty-four chapters</p>
     </div>
 
-    <!-- Add each Quenta Silmarillion chapter here as its own <section class="chapter" id="qs-N">, following the structure of Chapters I and II above. Use chapter-eyebrow "Quenta Silmarillion — Chapter N" and chapter-title as the book's own chapter title. These chapters have no separate subtitle line in the source, so omit chapter-subtitle; the .chapter-title + .lead rule already handles that spacing. Also replace the toc-pending placeholder with a real <li><a href="#qs-N">N. Title</a></li> inside the toc-sub list once at least one chapter exists. -->
+    <section id="qs-1" class="chapter">
+      <p class="chapter-eyebrow">Quenta Silmarillion — chapter 1</p>
+      <h2 class="chapter-title">Of the Beginning of Days</h2>
+
+      <p class="lead"><span class="dropcap">T</span>he First War is already old news by the time this chapter opens; Melkor has been winning it, until Tulkas arrives, laughing, and simply scares him off Arda entirely. With Melkor gone, the Valar finally get to build things: they shape the seas and lands, Yavanna plants the first seeds, and Aulë raises two enormous lamps, Illuin in the north and Ormal in the south, so the world sits in a kind of permanent gentle daylight. Everything grows lush almost immediately, though flowers and birds are still being held in reserve for later. The Valar settle on the island of Almaren and are, for a while, simply happy.</p>
+
+      <div class="diagram-block">
+        <svg viewBox="0 0 680 600" role="img" aria-labelledby="d5title d5desc">
+          <title id="d5title">The Spring of Arda: light, growth, and ruin</title>
+          <desc id="d5desc">Five steps: Tulkas drives Melkor off and an age of peace begins; the Two Lamps light the world; Melkor secretly builds the fortress Utumno; he destroys the Lamps, permanently marring Arda's shape; the Valar flee and found Valinor with the Two Trees.</desc>
+          <defs><marker id="arrow5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#9c8350" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+          <g class="nbox gray">
+            <rect x="180" y="40" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="58" text-anchor="middle" dominant-baseline="central">Tulkas drives off Melkor</text>
+            <text class="lbl-sub" x="340" y="76" text-anchor="middle" dominant-baseline="central">An age of peace begins</text>
+          </g>
+          <line x1="340" y1="96" x2="340" y2="156" class="arrow" marker-end="url(#arrow5)"/>
+
+          <g class="nbox teal">
+            <rect x="180" y="156" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="174" text-anchor="middle" dominant-baseline="central">The Two Lamps</text>
+            <text class="lbl-sub" x="340" y="192" text-anchor="middle" dominant-baseline="central">Illuin and Ormal light Arda</text>
+          </g>
+          <line x1="340" y1="212" x2="340" y2="272" class="arrow" marker-end="url(#arrow5)"/>
+
+          <g class="nbox coral">
+            <rect x="180" y="272" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="290" text-anchor="middle" dominant-baseline="central">Melkor builds Utumno</text>
+            <text class="lbl-sub" x="340" y="308" text-anchor="middle" dominant-baseline="central">In secret, his corruption spreads</text>
+          </g>
+          <line x1="340" y1="328" x2="340" y2="388" class="arrow" marker-end="url(#arrow5)"/>
+
+          <g class="nbox coral">
+            <rect x="180" y="388" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="406" text-anchor="middle" dominant-baseline="central">Melkor destroys the Lamps</text>
+            <text class="lbl-sub" x="340" y="424" text-anchor="middle" dominant-baseline="central">Arda's shape is marred forever</text>
+          </g>
+          <line x1="340" y1="444" x2="340" y2="504" class="arrow" marker-end="url(#arrow5)"/>
+
+          <g class="nbox teal">
+            <rect x="180" y="504" width="320" height="56" rx="8"/>
+            <text class="lbl-title" x="340" y="522" text-anchor="middle" dominant-baseline="central">The Valar found Valinor</text>
+            <text class="lbl-sub" x="340" y="540" text-anchor="middle" dominant-baseline="central">Telperion and Laurelin are born</text>
+          </g>
+        </svg>
+        <p class="diagram-caption">teal marks the Valar's own acts of making; coral marks Melkor's interference</p>
+      </div>
+
+      <p>What actually triggers the disaster is almost mundane: Manwë throws a feast, the two hardest-working Valar, Aulë and Tulkas, are exhausted and let their guard down, and Melkor, who has had spies among the Maiar the whole time, picks that exact moment to slip back in unnoticed and start digging out the fortress of Utumno. By the time the Valar even realize he is active again, his corruption is already leaking into the world, rotting plants and twisting beasts into monsters. Melkor strikes first, toppling the Lamps' pillars outright, and the resulting catastrophe is severe enough that the text is blunt about it: Arda's original shape and symmetry are never restored, full stop. The Valar cannot even fully chase him down afterward, partly because they are busy containing the physical wreckage, and partly because they do not yet know where the Children of Ilúvatar are going to live, so they are afraid of doing even more damage to the planet while trying.</p>
+
+      <p>That ending forces a relocation. The Valar abandon Middle-earth for Aman, wall themselves in behind the Pelóri mountains, and build Valinor as a kind of sealed paradise. The Two Trees planted there, Telperion (silver) and Laurelin (gold), are not merely decorative; their alternating seven-hour cycles of waxing and waning literally define a day and start the formal Count of Time. Middle-earth itself is left in starlit twilight, mostly unsupervised except for occasional intervention, Yavanna sneaking back to heal damage, Oromë hunting Melkor's monsters with a horn loud enough to make Melkor flinch in his own fortress.</p>
+
+      <p>Then the chapter pivots hard into theology. Ilúvatar explains, in his own words, why Men exist differently from Elves: Elves are bound to the world until it ends and effectively belong to the Music's fixed pattern, while Men get something genuinely new, hearts that find no rest inside the world and a kind of freedom to shape their own fate outside the Music's design entirely. That freedom is exactly why the text says Elves consider Men to resemble Melkor more than any other being, not morally, but structurally: both step outside the pattern they were given.</p>
+
+      <div class="diagram-block">
+        <svg viewBox="0 0 680 230" role="img" aria-labelledby="d6title d6desc">
+          <title id="d6title">The children of Ilúvatar: two gifts, two fates</title>
+          <desc id="d6desc">A structural comparison: the Elves are bound to the world until its end, while Men are free in heart but mortal, with death given to them as a gift.</desc>
+
+          <g class="nbox gray">
+            <rect x="60" y="40" width="560" height="150" rx="16"/>
+            <text class="lbl-title" x="340" y="72" text-anchor="middle" dominant-baseline="central">The children of Ilúvatar</text>
+            <text class="lbl-sub" x="340" y="90" text-anchor="middle" dominant-baseline="central">Two gifts, two fates</text>
+          </g>
+
+          <g class="nbox gray">
+            <rect x="90" y="110" width="230" height="56" rx="8"/>
+            <text class="lbl-title" x="205" y="128" text-anchor="middle" dominant-baseline="central">The Elves</text>
+            <text class="lbl-sub" x="205" y="146" text-anchor="middle" dominant-baseline="central">Bound to the world's end</text>
+          </g>
+
+          <g class="nbox gray">
+            <rect x="360" y="110" width="230" height="56" rx="8"/>
+            <text class="lbl-title" x="475" y="128" text-anchor="middle" dominant-baseline="central">The Men</text>
+            <text class="lbl-sub" x="475" y="146" text-anchor="middle" dominant-baseline="central">Free in heart, but mortal</text>
+          </g>
+        </svg>
+      </div>
+
+      <aside class="key-idea">
+        <p class="key-idea-label">the idea to hold onto</p>
+        <p>Every part of the book so far has stated its central tension once, in a different vocabulary. The Music called it discord versus the shared theme. Valaquenta called it self-possession versus service. Here Ilúvatar calls it fate versus freedom, and reframes mortality itself, the thing Men spend the rest of the legendarium grieving, as a gift the Valar will one day envy.</p>
+      </aside>
+
+      <p class="back-to-toc"><a href="#toc">↑ back to contents</a></p>
+    </section>
+
+    <!-- Add Quenta Silmarillion Chapter 2 here as its own <section class="chapter" id="qs-2">, following the structure of qs-1 above, including a closing <p class="back-to-toc"><a href="#toc">back to contents</a></p> before </section>. Also replace the toc-pending placeholder (or add alongside qs-1's entry) with a real <li><a href="#qs-2">2. Title</a></li> inside the toc-sub list. -->
 
   </main>
 
