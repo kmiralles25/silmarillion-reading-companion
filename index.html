@@ -75,20 +75,36 @@
   .wave-coral { stroke: var(--coral); fill: none; opacity: 0.85; }
   .wave-star { fill: var(--gold); }
 
-  .toc {
+  .toc-wrap {
     border-top: 1px solid rgba(216,181,108,0.25);
     border-bottom: 1px solid rgba(216,181,108,0.25);
-    padding: 20px 0; margin-bottom: 56px;
+    margin-bottom: 56px;
   }
-  .toc-label {
+  .toc-wrap > summary {
+    cursor: pointer; list-style: none; text-align: center; padding: 18px 0;
     font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px;
     letter-spacing: 0.12em; text-transform: uppercase; color: var(--lavender);
-    margin: 0 0 10px; text-align: center;
   }
-  .toc ol { list-style: none; margin: 0; padding: 0; text-align: center; }
-  .toc li { margin: 6px 0; }
-  .toc a { font-family: 'Lora', Georgia, serif; font-size: 16px; color: var(--parchment); border-bottom: 1px solid transparent; }
-  .toc a:hover { color: var(--gold); border-bottom-color: var(--gold-dim); }
+  .toc-wrap > summary::-webkit-details-marker { display: none; }
+  .toc-wrap > summary::after { content: '▾'; margin-left: 8px; color: var(--gold-dim); display: inline-block; transition: transform .2s; }
+  .toc-wrap[open] > summary::after { transform: rotate(180deg); }
+  .toc-list { list-style: none; margin: 0; padding: 0 0 24px; text-align: center; }
+  .toc-list > li { margin: 8px 0; }
+  .toc-list a { font-family: 'Lora', Georgia, serif; font-size: 16px; color: var(--parchment); border-bottom: 1px solid transparent; }
+  .toc-list a:hover { color: var(--gold); border-bottom-color: var(--gold-dim); }
+  .toc-sub { display: inline-block; text-align: left; margin: 2px auto 0; }
+  .toc-sub summary {
+    cursor: pointer; list-style: none; font-family: 'Lora', Georgia, serif; font-style: italic;
+    font-size: 16px; color: var(--parchment);
+  }
+  .toc-sub summary::-webkit-details-marker { display: none; }
+  .toc-sub summary::after { content: '▸'; margin-left: 8px; font-size: 11px; color: var(--gold-dim); display: inline-block; transition: transform .2s; }
+  .toc-sub[open] summary::after { transform: rotate(90deg); }
+  .toc-sub ol { list-style: none; margin: 10px 0 4px; padding-left: 20px; text-align: left; }
+  .toc-sub li { margin: 6px 0; }
+  .toc-sub a { font-family: 'Lora', Georgia, serif; font-size: 14.5px; color: var(--parchment); border-bottom: 1px solid transparent; }
+  .toc-sub a:hover { color: var(--gold); border-bottom-color: var(--gold-dim); }
+  .toc-pending { list-style: none; font-style: italic; font-size: 13.5px; color: var(--parchment-dim); margin: 6px 0; }
 
   .chapter { margin-bottom: 48px; }
   .chapter-eyebrow {
@@ -102,6 +118,24 @@
   .chapter-subtitle {
     font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 17px;
     color: var(--parchment-dim); margin: 6px 0 36px;
+  }
+  .chapter-title + .lead { margin-top: 28px; }
+
+  .part-divider {
+    text-align: center; margin: 0 0 40px; padding-top: 40px;
+    border-top: 1px solid rgba(216,181,108,0.25);
+  }
+  .part-eyebrow {
+    font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dim); margin: 0;
+  }
+  .part-title {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: 44px; color: var(--gold); margin: 8px 0 0;
+  }
+  .part-subtitle {
+    font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 16px;
+    color: var(--parchment-dim); margin: 8px 0 0;
   }
 
   p { margin: 0 0 22px; }
@@ -177,13 +211,21 @@
     </div>
   </header>
 
-  <nav class="toc" aria-label="chapters">
-    <p class="toc-label">chapters</p>
-    <ol>
+  <details class="toc-wrap" open>
+    <summary>contents</summary>
+    <ol class="toc-list">
       <li><a href="#ainulindale">I — Ainulindalë: the music of the Ainur</a></li>
       <li><a href="#valaquenta">II — Valaquenta: the Valar and Maiar</a></li>
+      <li>
+        <details class="toc-sub">
+          <summary>III — Quenta Silmarillion</summary>
+          <ol>
+            <li class="toc-pending">chapters will appear here as you go</li>
+          </ol>
+        </details>
+      </li>
     </ol>
-  </nav>
+  </details>
 
   <main>
     <section id="ainulindale" class="chapter">
@@ -384,7 +426,13 @@
       </aside>
     </section>
 
-    <!-- Add Chapter III here, following the same <section class="chapter"> structure as Chapter II above. Also add a matching <li> link inside the <nav class="toc"> list. -->
+    <div class="part-divider" id="quenta-silmarillion">
+      <p class="part-eyebrow">part III</p>
+      <h2 class="part-title">Quenta Silmarillion</h2>
+      <p class="part-subtitle">the history of the Silmarils, in twenty-four chapters</p>
+    </div>
+
+    <!-- Add each Quenta Silmarillion chapter here as its own <section class="chapter" id="qs-N">, following the structure of Chapters I and II above. Use chapter-eyebrow "Quenta Silmarillion — Chapter N" and chapter-title as the book's own chapter title. These chapters have no separate subtitle line in the source, so omit chapter-subtitle; the .chapter-title + .lead rule already handles that spacing. Also replace the toc-pending placeholder with a real <li><a href="#qs-N">N. Title</a></li> inside the toc-sub list once at least one chapter exists. -->
 
   </main>
 
