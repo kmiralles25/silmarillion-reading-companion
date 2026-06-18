@@ -156,6 +156,19 @@
   .lbl-sub { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 12.5px; }
   .arrow { stroke: var(--gold-dim); stroke-width: 1.5; fill: none; }
 
+  .realm-list { margin: 0 0 28px; }
+  .realm-group-label {
+    font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); margin: 0 0 8px;
+  }
+  .realm-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding: 9px 0; border-bottom: 1px solid rgba(100,79,98,0.15);
+  }
+  .realm-list .realm-row:last-child { border-bottom: none; }
+  .realm-name { font-family: 'Lora', Georgia, serif; font-size: 16.5px; color: var(--parchment); flex-shrink: 0; }
+  .realm-lord { font-family: 'Lora', Georgia, serif; font-size: 15px; font-style: italic; color: var(--parchment-dim); text-align: right; }
+
   .key-idea {
     background: var(--void-deep); border: 1px solid rgba(100,79,98,0.3);
     border-radius: 4px; padding: 24px 28px; margin: 40px 0 0;
@@ -186,6 +199,8 @@
     body { font-size: 16.5px; }
     .page { padding: 40px 18px 72px; }
     .dropcap { font-size: 52px; }
+    .realm-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .realm-lord { text-align: left; }
   }
 </style>
 </head>
@@ -231,6 +246,7 @@
             <li><a href="#qs-11">11. Of the Sun and Moon and the Hiding of Valinor</a></li>
             <li><a href="#qs-12">12. Of Men</a></li>
             <li><a href="#qs-13">13. Of the Return of the Noldor</a></li>
+            <li><a href="#qs-14">14. Of Beleriand and Its Realms</a></li>
           </ol>
         </details>
       </li>
@@ -1842,6 +1858,52 @@
       <aside class="key-idea">
         <p class="key-idea-label">the idea to hold onto</p>
         <p>Set against each other, the chapter's two real engines are Fëanor's oath and Fingon's memory: one binds a man to a vengeance that kills him and leaves no body to bury, the other is owed to nobody and gets answered anyway — by Maedhros's unforced surrender of a crown he was entitled to keep, and by Thorondor arriving at all, because Manwë, despite everything, still pitied Elves who had defied him to leave Valinor in the first place. The oath only sleeps; the debt of freely given loyalty is what actually gets paid.</p>
+      </aside>
+
+      <p class="back-to-toc"><a href="#toc">↑ back to contents</a></p>
+    </section>
+
+    <section id="qs-14" class="chapter">
+      <p class="chapter-eyebrow">Quenta Silmarillion — chapter 14</p>
+      <h2 class="chapter-title">Of Beleriand and Its Realms</h2>
+
+      <p class="lead"><span class="dropcap">T</span>his chapter pauses the story to survey the land: who settled where, and which Elf-lord answered for which stretch of Beleriand, once the Siege of Angband took hold.</p>
+
+      <p class="diagram-caption"><a href="http://lotrproject.com/map/beleriand/#zoom=3&lat=-850&lon=1500&layers=BTTTTTT" target="_blank" rel="noopener">an interactive map of Beleriand, for reference ↗</a></p>
+
+      <div class="realm-list">
+        <p class="realm-group-label">the northern march</p>
+        <div class="realm-row"><span class="realm-name">Hithlum</span><span class="realm-lord">Fingolfin and Fingon</span></div>
+        <div class="realm-row"><span class="realm-name">Nevrast</span><span class="realm-lord">Turgon</span></div>
+        <div class="realm-row"><span class="realm-name">Dorthonion</span><span class="realm-lord">Angrod and Aegnor, vassals of Finrod</span></div>
+        <div class="realm-row"><span class="realm-name">Pass of Sirion</span><span class="realm-lord">Finrod, then Orodreth</span></div>
+      </div>
+
+      <div class="realm-list">
+        <p class="realm-group-label">west beleriand</p>
+        <div class="realm-row"><span class="realm-name">Nargothrond</span><span class="realm-lord">Finrod Felagund — the greatest Noldorin realm</span></div>
+        <div class="realm-row"><span class="realm-name">The Falas</span><span class="realm-lord">Círdan — an ally, not a vassal</span></div>
+      </div>
+
+      <div class="realm-list">
+        <p class="realm-group-label">doriath</p>
+        <div class="realm-row"><span class="realm-name">Doriath</span><span class="realm-lord">Thingol and Melian — answers to no one</span></div>
+      </div>
+
+      <div class="realm-list">
+        <p class="realm-group-label">east beleriand — the sons of fëanor</p>
+        <div class="realm-row"><span class="realm-name">Himring</span><span class="realm-lord">Maedhros</span></div>
+        <div class="realm-row"><span class="realm-name">Aglon and Himlad</span><span class="realm-lord">Celegorm and Curufin</span></div>
+        <div class="realm-row"><span class="realm-name">Maglor's Gap</span><span class="realm-lord">Maglor</span></div>
+        <div class="realm-row"><span class="realm-name">Thargelion</span><span class="realm-lord">Caranthir, by Lake Helevorn</span></div>
+        <div class="realm-row"><span class="realm-name">Ossiriand</span><span class="realm-lord">the Green-elves — independent of all of them</span></div>
+      </div>
+
+      <p>Two stretches have no lord at all: Dimbar, claimed only by the eagles of the Crissaegrim, and Nan Dungortheb, the haunted gap toward Doriath where Ungoliant once denned. Angband, Morgoth's own stronghold beneath Thangorodrim, sits north of everything and is the reason the northern march exists in the first place.</p>
+
+      <aside class="key-idea">
+        <p class="key-idea-label">the idea to hold onto</p>
+        <p>Nargothrond is the largest of the Noldorin realms, but the formal High Kingship rests with Fingolfin, and then Fingon, over Hithlum — the smallest and most exposed of the four.</p>
       </aside>
 
       <p class="back-to-toc"><a href="#toc">↑ back to contents</a></p>
